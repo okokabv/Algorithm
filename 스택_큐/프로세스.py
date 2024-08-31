@@ -11,45 +11,25 @@ location = 몇번째로 실행되는지 알고싶은 프로세스 위치 (0번�
 
 def solution(priorities, location):
     answer = 0
-    result = [0] * len(priorities)
-    idx_list = priorities
+    index_p = []
+    for idx, p in enumerate(priorities):
+        index_p.append([idx,p])
     
-    for i in range(len(priorities)):
-        if len(priorities) != len(result) : 
-            max_value = max(priorities)
-            max_idx = idx_list.index(max_value)
-            priorities.pop(max_idx)
-            idx_list[max_idx] = 0
+    sorted_p = sorted(priorities, reverse=True)
+    
+    while index_p:
+        check = index_p.pop(0)
+        
+        if check[1] == sorted_p[0]:
+            sorted_p.pop(0)
+            answer +=1
             
-            if max_value == max(priorities)
-                if f_max_idx > max_idx:                
-                    priorities.pop(max_idx)
-                    priorities.append(max_value)
-
-            temp = max(priorities)
-            priorities.pop(max_idx)
-            
-            if max(priorities) == temp:
-                a_temp = priorities.index(max(priorities))
-                if max
-                if a_temp > max_idx and max:
-                    priorities.insert(max_idx, max(priorities))      
-                    max_idx = a_temp
-                    dense = True
-                    while dense:
-                        
-                
-                else:
-                    result[max_idx] = i+1
-                
-            
+            if check[0] ==location:
+                return answer
+        
         else:
-            f_max_idx = priorities.index(max(priorities))    
-            priorities.pop(f_max_idx)
-            idx_list[f_max_idx] = 0
-            result[f_max_idx] = i+1       
-        
-        
+            index_p.append(check)
+    
     return answer
         
     return answer
