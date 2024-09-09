@@ -12,5 +12,28 @@ K이상으로 만들때 음식을 섞어야하는 최수 횟수 return
 
 힙 = 완전 이진 트리
 -> 이진 트리 탐색 -> 나누기 2
+#힙을 직접 구현하면 느려서 시간초과에 걸림
 
 '''
+
+
+import heapq
+
+def solution(scoville, K):
+    answer = 0
+    heapq.heapify(scoville)
+    
+    
+    while scoville and scoville[0] < K:
+        if 1>=len(scoville):
+            return -1
+        
+        else:
+            sco_one = heapq.heappop(scoville)
+            sco_two = heapq.heappop(scoville)
+            sco_mix = sco_one+ (sco_two * 2)
+            answer +=1    
+            heapq.heappush(scoville, sco_mix)
+                       
+    return answer
+
